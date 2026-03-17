@@ -1,0 +1,29 @@
+.sanfona-header {
+  background-color: purple;
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  border-radius: 5px 5px 0 0;
+}
+
+/* Estilo do conteúdo que expande */
+.sanfona-content {
+  padding: 0 15px;
+  background-color: #f9f9f9;
+  max-height: 0; /* Começa escondido */
+  overflow: hidden; /* Garante que o texto suma */
+  transition: max-height 0.3s ease-out; /* Faz a animação suave */
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+        /* Classe que será adicionada via JavaScript */
+.aberto {
+  max-height: 900px; /* Um valor alto o suficiente para o seu texto */
+  padding: 15px;
+}
