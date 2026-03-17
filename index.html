@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
   <title>Pratica</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <!--DIV DO VOCABULARIO-->
   <button class="sanfona-header" onclick="toggleConteudo(1)">Vocabulario:</button>
@@ -18,14 +20,33 @@
       <button class="select" onclick="toggleOn()" id="toggle">Inverter Sinais</button>
       <button class="select" onclick="untoggleOn()" id="untoggle">Desselecionar todos</button>
     </div>
-    
+
   </div>
   <br>
-  
-  <!---->
-  <button id="show-btn">Definir</button>
-  <div class="hidden"></div>
-  
+
+  <!--BOTÃO PARA DEFINIR OS TEMPOS-->
+  <button id="show-btn" onclick="Definir()">Definir</button>
+
+  <!--DIV DO QUIZ-->
+  <div class="hidden">
+    <div class="quiz-container">
+      <div class="quiz-card">
+        <!--TEMPO DE CONJUGAÇÃO-->
+        <div class="verb-tense" id ="verb-tense">Pretérito Imperfeito</div>
+        <!--VERBO BASE-->
+        <div class="base-verb" id="base-verb">Estudar</div>
+
+        <button class="reveal-btn" id="btn-revelar">Mostrar Conjugação</button>
+
+        <div class="answer-box" id="answer-box">
+          <!--VERBO CONJUGAÇÃO-->
+          <span class="answer-text" id="answer-text">Eu estudava</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
+
 </html>

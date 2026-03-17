@@ -3,6 +3,8 @@ const vocabDiv = document.getElementById("vocab");
 const tempoDiv = document.getElementById("tempo");
 const toggleBtn = document.getElementById("toggle");
 
+let temposSelecionados = [];
+
 const vocabList = [
     { palavra: "見る", godan: false },
     { palavra: "食べる", godan: false },
@@ -28,25 +30,25 @@ const vocabList = [
 
 const tempoList = [
     "Passado",
-     "Passado Educado",
-      "Te-Form",
-     "Te-form Educado"
-    ];
+    "Passado Educado",
+    "Te-Form",
+    "Te-form Educado"
+];
 
 function toggleConteudo(num) {
     switch (num) {
         case 1:
             vocabDiv.classList.toggle("aberto");
             break;
-    
+
         case 2:
             tempoDiv.classList.toggle("aberto");
             break;
     }
-    
+
 }
 
-function loadConteudo() {   
+function loadConteudo() {
     // -- Carregar os vocabularios
 
     //Cria o ul default
@@ -55,13 +57,13 @@ function loadConteudo() {
         //Cria o elemento li e guarda a palavra nele
         const addVocab = document.createElement("li");
         addVocab.textContent = vocabList[i].palavra;
-        
+
         //Guarda o elemento no ul
         lista.appendChild(addVocab);
     }
     //Guarda o elemento ul no div correspondente
     vocabDiv.appendChild(lista);
-    
+
     // -- Carregar o tempo dos verbos
 
     //Cria o elemento ul intermediario
@@ -74,7 +76,7 @@ function loadConteudo() {
         const addTempo = document.createElement("input");
         addTempo.setAttribute("type", "checkbox");
         //Define a regra do nome dele
-        let nome = "tempo-" + (i+1); 
+        let nome = i;
         addTempo.setAttribute("id", nome);
         addTempo.setAttribute("name", nome);
         addTempo.setAttribute("value", tempoList[i]);
@@ -83,7 +85,7 @@ function loadConteudo() {
         const addLabel = document.createElement("label");
         addLabel.setAttribute("for", nome);
         addLabel.textContent = tempoList[i];
-        
+
         //Guarda os elementos dentro do Li
         AddLi.appendChild(addTempo);
         AddLi.appendChild(addLabel);
@@ -94,13 +96,13 @@ function loadConteudo() {
     tempoDiv.appendChild(listaTempo);
 }
 
-function toggleOn(){
+function toggleOn() {
     toggleBtn.classList.toggle("toggled");
 
     const elementos = tempoDiv.querySelectorAll('*');
 
-    for(let i = 0; i < elementos.length; i++){
-        if(elementos[i].nodeName = "INPUT"){
+    for (let i = 0; i < elementos.length; i++) {
+        if (elementos[i].nodeName = "INPUT") {
             elementos[i].checked = !elementos[i].checked;
             console.log("Achado")
         }
@@ -108,14 +110,14 @@ function toggleOn(){
     console.log("Setado")
 }
 
-function untoggleOn(){
+function untoggleOn() {
     toggleBtn.classList.toggle("toggled");
 
     const elementos = tempoDiv.querySelectorAll('*');
 
-    for(let i = 0; i < elementos.length; i++){
-        if(elementos[i].nodeName = "INPUT"){
-            elementos[i].checked = false    ;
+    for (let i = 0; i < elementos.length; i++) {
+        if (elementos[i].nodeName = "INPUT") {
+            elementos[i].checked = false;
             console.log("Achado")
         }
     }
@@ -123,3 +125,226 @@ function untoggleOn(){
 }
 
 loadConteudo();
+
+const tempoSelDiv = document.getElementById("verb-tense");
+const verboBaseDiv = document.getElementById("base-verb");
+const verboConjugDiv = document.getElementById("answer-text");
+
+function Definir() {
+    const elementos = tempoDiv.querySelectorAll('*');
+    const selecionados = [];
+
+    for (let i = 0; i < elementos.length; i++) {
+        if (elementos[i].nodeName = "INPUT") {
+            selecionados.push(elementos[i].id);
+        }
+    }
+    temposSelecionados = selecionados;
+    Carregar();
+}
+
+function Carregar(){
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Funções responsavel pelas conjugações
+
+
+
+
+//Essa função é respossavel por trnasformar o final do verbo em outra coisa
+//Por exermpro: 待, final = つ, se o tipo for 1, ele retorna result = ち 
+function transformarFim(palavra, tipo) {
+    let palavraArray = palavra.palavra.split('');
+    final = palavraArray.at(-1);
+    let result;
+    if (tipo == 1) {
+        switch (final) {
+            case "る":
+                if (palavra.godan) {
+                    result = "sem";
+                } else {
+                    result = "り";
+                }
+                break;
+
+            case "う":
+                result = "い";
+                break;
+            case "つ":
+                result = "ち";
+                break;
+
+            case "ぶ":
+                result = "び";
+                break;
+
+            case "む":
+                result = "み";
+                break;
+
+            case "ぬ":
+                result = "に";
+                break;
+
+            case "く":
+                result = "き";
+                break;
+
+            case "ぐ":
+                result = "ぎ";
+                break;
+        }
+    }
+    return result;
+}
+
+//Aqui é definido os metodos para conjugar
+function passado(palavra, polite) {
+    let palavraArray = palavra.palavra.split('');
+    final = palavraArray.at(-1);
+    let result;
+    if (!polite) {
+        switch (final) {
+            case "る":
+                if (palavra.godan) {
+                    result = "った";
+                } else {
+                    result = "た";
+                }
+                break;
+
+            case "す":
+                result = "し";
+                break;
+
+            case "う":
+            case "つ":
+                result = "った";
+                break;
+
+            case "ぶ":
+            case "む":
+            case "ぬ":
+                result = "んだ";
+                break;
+
+            case "く":
+                if (palavra.palavra == "行く") {
+                    result = "った"
+                } else {
+                    result = "いた";
+                }
+                break;
+
+            case "ぐ":
+                result = "いだ";
+                break;
+            default:
+                result = final
+                break;
+        }
+    } else {
+        final = transformarFim(palavra, 1);
+        result = final + "ました";
+    }
+    return result;
+}
+
+function teForm(palavra, polite) {
+    let palavraArray = palavra.palavra.split('');
+    final = palavraArray.at(-1);
+    let result;
+    if (!polite) {
+        switch (final) {
+            case "る":
+                if (palavra.godan) {
+                    result = "って";
+                } else {
+                    result = "て";
+                }
+                break;
+
+            case "す":
+                result = "して";
+                break;
+
+            case "う":
+            case "つ":
+                result = "って";
+                break;
+
+            case "ぶ":
+            case "む":
+            case "ぬ":
+                result = "んで";
+                break;
+
+            case "く":
+                if (palavra.palavra == "行く") {
+                    result = "って"
+                } else {
+                    result = "いて";
+                }
+                break;
+
+            case "ぐ":
+                result = "いで";
+                break;
+            default:
+                result = final
+                break;
+        }
+    } else {
+        final = transformarFim(palavra, 1);
+        result = final + "まして";
+    }
+    return result;
+}

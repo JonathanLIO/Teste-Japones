@@ -1,3 +1,7 @@
+body{
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
 .sanfona-header {
   background-color: purple;
   color: white;
@@ -94,6 +98,82 @@
   font-size: 15px;
 }
 
+:root {
+  --primary-color: purple; /* Roxo vibrante */
+  --primary-hover: rgb(117, 0, 117); /* Roxo claro para o hover */
+  --bg-card: #ffffff;
+  --text-main: #2d3436;
+  --text-secondary: grey;
+  --border-radius: 16px;
+}
+
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px; /* Mais respiro em volta */
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.quiz-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15); /* Sombra levemente roxa */
+  padding: 50px; /* Aumentei o preenchimento interno */
+  width: 100%;
+  max-width: 500px; /* Ficou bem mais largo */
+  text-align: center;
+  border: 1px solid rgba(108, 92, 231, 0.1);
+}
+
+.verb-tense {
+  font-size: 2.2rem; /* Título bem maior */
+  font-weight: 800;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.base-verb {
+  font-size: 1.6rem; /* Verbo original maior */
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 40px;
+  display: block;
+}
+
+.reveal-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 18px 36px; /* Botão mais robusto */
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.answer-box {
+  margin-top: 30px;
+  padding: 25px;
+  background-color: #f3f0ff; /* Fundo roxo bem clarinho */
+  border-radius: 12px;
+  border: 2px solid var(--primary-color);
+  display: none; 
+  animation: fadeIn 0.4s ease; /* Animação simples para aparecer */
+}
+
+.answer-text {
+  font-size: 2rem; /* Resposta com bastante destaque */
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Animação para a resposta não aparecer tão "seca" */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* Classe que será adicionada via JavaScript */
 .aberto {
