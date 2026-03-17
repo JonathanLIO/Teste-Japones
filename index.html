@@ -7,10 +7,22 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <button class="sanfona-header" onclick="toggleConteudo()">Abrir</button>
+  <!--DIV DO VOCABULARIO-->
+  <button class="sanfona-header" onclick="toggleConteudo(1)">Vocabulario:</button>
   <div class="list-vocab sanfona-content" id="vocab"></div>
-  <div class="list-tempo" id="tempo"></div>
+  <br><br>
+  <!--DIV DO TEMPO-->
+  <button class="sanfona-header" onclick="toggleConteudo(2)">Tempos:</button>
+  <div class="list-tempo sanfona-content" id="tempo">
+    <div class="flex-column">
+      <button class="select" onclick="toggleOn()" id="toggle">Inverter Sinais</button>
+      <button class="select" onclick="untoggleOn()" id="untoggle">Desselecionar todos</button>
+    </div>
+    
+  </div>
   <br>
+  
+  <!---->
   <button id="show-btn">Definir</button>
   <div class="hidden"></div>
   

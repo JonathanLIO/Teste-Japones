@@ -22,8 +22,82 @@
   border-top: none;
 }
 
-        /* Classe que será adicionada via JavaScript */
+/* O container que segura as palavras */
+.list-vocab ul {
+  display: flex;
+  flex-wrap: wrap;     /* Permite que as palavras pulem para a linha de baixo */
+  list-style: none;    /* Remove as bolinhas da lista */
+  padding: 10px;
+  margin: 0;
+  gap: 10px;           /* Espaçamento entre as palavras */
+}
+
+/* Cada palavra individual */
+.list-vocab li {
+  flex: 1 0 21%;       /* Tenta ocupar ~25%, subtraindo um pouco pelo 'gap' */
+  font-size: 1.2rem;   /* Aumenta o tamanho da fonte */
+  font-weight: bold;   /* Deixa um pouco mais evidente */
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Um efeitinho visual opcional */
+}
+
+.list-tempo ul {
+  display: flex;
+  flex-wrap: wrap;     /* Permite que as palavras pulem para a linha de baixo */
+  list-style: none;    /* Remove as bolinhas da lista */
+  padding: 10px;
+  margin: 0;
+  gap: 10px;           /* Espaçamento entre as palavras */
+}
+
+.list-tempo li {
+  display: flex;
+  flex: 1 0 48%;       /* Tenta ocupar ~25%, subtraindo um pouco pelo 'gap' */
+  align-items: center;
+  font-size: 1.2rem;   /* Aumenta o tamanho da fonte */
+  font-weight: bold;   /* Deixa um pouco mais evidente */
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Um efeitinho visual opcional */
+}
+
+.list-tempo input {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.list-tempo label {
+  width: 95%; 
+}
+
+.flex-column{
+  display: flex;
+  flex: 1 0 48%;
+  gap: 10px;
+}
+
+.select{
+  border-radius: 5px 5px 5px 5px;
+  background-color: rgba(128, 0, 128, 0.829);
+  width: 50%;
+  text-align: left;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+
+/* Classe que será adicionada via JavaScript */
 .aberto {
   max-height: 900px; /* Um valor alto o suficiente para o seu texto */
   padding: 15px;
 }
+
