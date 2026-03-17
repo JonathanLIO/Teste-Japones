@@ -144,7 +144,25 @@ function Definir() {
 }
 
 function Carregar(){
-    
+    minTem = 0;
+    maxTem = temposSelecionados.length;
+    random = Math.floor(Math.random() * (maxTem - minTem + 1)) + minTem;
+
+    minVer = 0;
+    maxVer = temposSelecionados.length;
+    random = Math.floor(Math.random() * (maxVer - minVer + 1)) + minVer;
+    tempoSelDiv.innerHTML = tempoList[random];
+    switch (random) {
+        case 1:
+            
+            break;
+        
+        case 2:
+
+            break;
+        default:
+            break;
+    }
 }
 
 
