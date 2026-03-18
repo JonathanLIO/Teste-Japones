@@ -28,19 +28,20 @@
   <button id="show-btn" onclick="Definir()">Definir</button>
 
   <!--DIV DO QUIZ-->
-  <div class="hidden">
+  <div class="hidden" id="hidden">
     <div class="quiz-container">
       <div class="quiz-card">
         <!--TEMPO DE CONJUGAÇÃO-->
-        <div class="verb-tense" id ="verb-tense">Pretérito Imperfeito</div>
+        <div class="verb-tense" id="verb-tense">Pretérito Imperfeito</div>
         <!--VERBO BASE-->
         <div class="base-verb" id="base-verb">Estudar</div>
 
-        <button class="reveal-btn" id="btn-revelar">Mostrar Conjugação</button>
-
+        <button class="reveal-btn hidden" id="btn-revelar" onclick="revealResposta()">Mostrar Conjugação</button>
+        
         <div class="answer-box" id="answer-box">
           <!--VERBO CONJUGAÇÃO-->
-          <span class="answer-text" id="answer-text">Eu estudava</span>
+          <span class="answer-text" id="answer-text">Eu estudava</span><br>
+          <button class="reveal-btn" id="btn-reiniciar" onclick="Carregar()">Gerar proxima palavra</button>
         </div>
       </div>
     </div>

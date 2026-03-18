@@ -131,38 +131,75 @@ const verboBaseDiv = document.getElementById("base-verb");
 const verboConjugDiv = document.getElementById("answer-text");
 
 function Definir() {
+    document.getElementById('hidden').classList.remove('hidden');
+    // Certifique-se de que tempoDiv está definido globalmente ou use document.getElementById
     const elementos = tempoDiv.querySelectorAll('*');
     const selecionados = [];
 
     for (let i = 0; i < elementos.length; i++) {
-        if (elementos[i].nodeName = "INPUT") {
-            selecionados.push(elementos[i].id);
+        // CORREÇÃO: Usar === para comparação
+        if (elementos[i].nodeName === "INPUT") {
+            if (elementos[i].checked) {
+                selecionados.push(elementos[i].id);
+            }            
         }
     }
+    
+    
+    // Simplificando a atribuição
     temposSelecionados = selecionados;
     Carregar();
 }
+    
+const btnQuiz1 = document.getElementById("btn-revelar");
+const divQuiz = document.getElementById("answer-box");
 
-function Carregar(){
-    minTem = 0;
-    maxTem = temposSelecionados.length;
-    random = Math.floor(Math.random() * (maxTem - minTem + 1)) + minTem;
+function revealResposta(){
+    divQuiz.classList.remove("hidden");
+    btnQuiz1.classList.add("hidden")
+}
 
-    minVer = 0;
-    maxVer = temposSelecionados.length;
-    random = Math.floor(Math.random() * (maxVer - minVer + 1)) + minVer;
-    tempoSelDiv.innerHTML = tempoList[random];
-    switch (random) {
-        case 1:
-            
+
+function Carregar() {
+    divQuiz.classList.add("hidden");
+    btnQuiz1.classList.remove("hidden");
+
+    // CORREÇÃO: Sorteio de índice (0 até length - 1)
+    // Se temposSelecionados tem 4 itens, randomTemp será 0, 1, 2 ou 3
+    let randomTemp = Math.floor(Math.random() * temposSelecionados.length);
+
+    // Mesma lógica para o vocabulário
+    let randomVocab = Math.floor(Math.random() * vocabList.length);
+    
+    let palavraConjug;
+    let verboAtual = vocabList[randomVocab];
+
+    console.log(`A palavra selecionada: ${vocabList[randomVocab].palavra}`);
+    console.log(`A posição da palavra: ${randomVocab} ; Limite: ${vocabList.length}`);
+    console.log(`O tempo selecionado: ${tempoList[randomTemp]}`);
+    console.log(`A posição do tempo: ${randomTemp} ; Limite: ${temposSelecionados.length}`);
+    // Lembre-se: se randomTemp for 0, ele cairá no default se você começar os cases no 1
+    switch (randomTemp) {
+        case 0:
+            palavraConjug = passado(verboAtual, 1);
             break;
-        
+        case 1:
+            palavraConjug = passado(verboAtual, 2);
+            break;
         case 2:
-
+            palavraConjug = teForm(verboAtual, 1);
+            break;
+        case 3:
+            palavraConjug = teForm(verboAtual, 2);
             break;
         default:
+            palavraConjug = "Forma não definida"; // Útil para debug
             break;
     }
+
+    tempoSelDiv.innerHTML = tempoList[randomTemp];
+    verboBaseDiv.innerHTML = verboAtual.palavra;
+    verboConjugDiv.innerHTML = palavraConjug;
 }
 
 
@@ -223,43 +260,48 @@ function transformarFim(palavra, tipo) {
     let palavraArray = palavra.palavra.split('');
     final = palavraArray.at(-1);
     let result;
-    if (tipo == 1) {
-        switch (final) {
-            case "る":
-                if (palavra.godan) {
-                    result = "sem";
-                } else {
-                    result = "り";
-                }
-                break;
+    switch (tipo) {
+        //Caso 1 é quando se transforma o final em i
+        case 1:
+            switch (final) {
+                case "る":
+                    if (!palavra.godan) {
+                        result = "";
+                    } else {
+                        result = "り";
+                    }
+                    break;
 
-            case "う":
-                result = "い";
-                break;
-            case "つ":
-                result = "ち";
-                break;
+                case "う":
+                    result = "い";
+                    break;
+                case "つ":
+                    result = "ち";
+                    break;
 
-            case "ぶ":
-                result = "び";
-                break;
+                case "ぶ":
+                    result = "び";
+                    break;
 
-            case "む":
-                result = "み";
-                break;
+                case "む":
+                    result = "み";
+                    break;
 
-            case "ぬ":
-                result = "に";
-                break;
+                case "ぬ":
+                    result = "に";
+                    break;
 
-            case "く":
-                result = "き";
-                break;
+                case "く":
+                    result = "き";
+                    break;
 
-            case "ぐ":
-                result = "ぎ";
-                break;
-        }
+                case "ぐ":
+                    result = "ぎ";
+                    break;
+            }
+            break;
+        default:
+            break;
     }
     return result;
 }
@@ -268,12 +310,13 @@ function transformarFim(palavra, tipo) {
 function passado(palavra, polite) {
     let palavraArray = palavra.palavra.split('');
     final = palavraArray.at(-1);
+    let palavraFinal;
     let result;
     if (!polite) {
         switch (final) {
             case "る":
-                if (palavra.godan) {
-                    result = "った";
+                if (!palavra.godan) {
+                    result = "っ    た";
                 } else {
                     result = "た";
                 }
@@ -313,7 +356,10 @@ function passado(palavra, polite) {
         final = transformarFim(palavra, 1);
         result = final + "ました";
     }
-    return result;
+    palavraArray.pop();
+    palavraFinal = palavraArray.join('')
+    palavraFinal += result;
+    return palavraFinal;
 }
 
 function teForm(palavra, polite) {
@@ -323,7 +369,7 @@ function teForm(palavra, polite) {
     if (!polite) {
         switch (final) {
             case "る":
-                if (palavra.godan) {
+                if (!palavra.godan) {
                     result = "って";
                 } else {
                     result = "て";
@@ -364,5 +410,8 @@ function teForm(palavra, polite) {
         final = transformarFim(palavra, 1);
         result = final + "まして";
     }
-    return result;
+    palavraArray.pop();
+    palavraFinal = palavraArray.join('');
+    palavraFinal += result;
+    return palavraFinal;
 }
