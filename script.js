@@ -75,6 +75,7 @@ function loadConteudo() {
         //Cria o elemento input e configura ele
         const addTempo = document.createElement("input");
         addTempo.setAttribute("type", "checkbox");
+        addTempo.checked = true;
         //Define a regra do nome dele
         let nome = i;
         addTempo.setAttribute("id", nome);
@@ -145,7 +146,7 @@ function Definir() {
         }
     }
     
-    
+
     // Simplificando a atribuição
     temposSelecionados = selecionados;
     Carregar();
@@ -181,16 +182,16 @@ function Carregar() {
     // Lembre-se: se randomTemp for 0, ele cairá no default se você começar os cases no 1
     switch (randomTemp) {
         case 0:
-            palavraConjug = passado(verboAtual, 1);
+            palavraConjug = passado(verboAtual, false);
             break;
         case 1:
-            palavraConjug = passado(verboAtual, 2);
+            palavraConjug = passado(verboAtual, true);
             break;
         case 2:
-            palavraConjug = teForm(verboAtual, 1);
+            palavraConjug = teForm(verboAtual, false);
             break;
         case 3:
-            palavraConjug = teForm(verboAtual, 2);
+            palavraConjug = teForm(verboAtual, true);
             break;
         default:
             palavraConjug = "Forma não definida"; // Útil para debug
@@ -265,10 +266,10 @@ function transformarFim(palavra, tipo) {
         case 1:
             switch (final) {
                 case "る":
-                    if (!palavra.godan) {
-                        result = "";
-                    } else {
+                    if (palavra.godan) {
                         result = "り";
+                    } else {
+                        result = "";
                     }
                     break;
 
@@ -298,9 +299,13 @@ function transformarFim(palavra, tipo) {
                 case "ぐ":
                     result = "ぎ";
                     break;
+                case "す":
+                    result = "し";
+                    break;
             }
             break;
         default:
+            result = "";
             break;
     }
     return result;
@@ -315,8 +320,8 @@ function passado(palavra, polite) {
     if (!polite) {
         switch (final) {
             case "る":
-                if (!palavra.godan) {
-                    result = "っ    た";
+                if (palavra.godan) {
+                    result = "った";
                 } else {
                     result = "た";
                 }
@@ -369,7 +374,7 @@ function teForm(palavra, polite) {
     if (!polite) {
         switch (final) {
             case "る":
-                if (!palavra.godan) {
+                if (palavra.godan) {
                     result = "って";
                 } else {
                     result = "て";
