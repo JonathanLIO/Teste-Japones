@@ -167,7 +167,7 @@ function Carregar() {
 
     // CORREÇÃO: Sorteio de índice (0 até length - 1)
     // Se temposSelecionados tem 4 itens, randomTemp será 0, 1, 2 ou 3
-    let randomVocab = itens[Math.floor(Math.random() * itens.length)];
+    let randomVocab = itens[Math.floor(Math.random() * tempoList.length)];
 
     let randomVocab = Math.floor(Math.random() * vocabList.length);
     
