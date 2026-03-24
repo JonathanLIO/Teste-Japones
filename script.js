@@ -167,9 +167,8 @@ function Carregar() {
 
     // CORREÇÃO: Sorteio de índice (0 até length - 1)
     // Se temposSelecionados tem 4 itens, randomTemp será 0, 1, 2 ou 3
-    let randomTemp = Math.floor(Math.random() * temposSelecionados.length);
+    let randomVocab = itens[Math.floor(Math.random() * itens.length)];
 
-    // Mesma lógica para o vocabulário
     let randomVocab = Math.floor(Math.random() * vocabList.length);
     
     let palavraConjug;
