@@ -10,11 +10,10 @@
 
 <body>
   <!--DIV DO VOCABULARIO-->
-  <button class="sanfona-header" onclick="toggleConteudo(1)">Vocabulario:</button>
+  <button class="sanfona-header top" onclick="toggleConteudo(1)">Vocabulario:</button>
   <div class="list-vocab sanfona-content" id="vocab"></div>
-  <br><br>
   <!--DIV DO TEMPO-->
-  <button class="sanfona-header" onclick="toggleConteudo(2)">Tempos:</button>
+  <button class="sanfona-header middle" onclick="toggleConteudo(2)">Tempos:</button>
   <div class="list-tempo sanfona-content" id="tempo">
     <div class="flex-column">
       <button class="select" onclick="toggleOn()" id="toggle">Inverter Sinais</button>
@@ -22,10 +21,9 @@
     </div>
 
   </div>
-  <br>
 
   <!--BOTÃO PARA DEFINIR OS TEMPOS-->
-  <button id="show-btn" onclick="Definir()">Definir</button>
+  <button id="show-btn" class="sanfona-header bottom" onclick="Definir()">Definir</button>
 
   <!--DIV DO QUIZ-->
   <div class="hidden" id="hidden">

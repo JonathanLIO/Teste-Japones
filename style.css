@@ -12,7 +12,18 @@ body{
   border: none;
   outline: none;
   font-size: 18px;
+}
+
+.top{
   border-radius: 5px 5px 0 0;
+}
+
+.middle{
+  border-radius: 0 0 0 0;
+}
+
+.bottom{
+  border-radius: 0 0 5px 5px;
 }
 
 /* Estilo do conteúdo que expande */
@@ -83,6 +94,10 @@ body{
   display: flex;
   flex: 1 0 48%;
   gap: 10px;
+}
+
+.quebrar-linha {
+    flex: 0 0 100%; 
 }
 
 .select{

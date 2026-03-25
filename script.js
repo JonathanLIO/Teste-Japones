@@ -32,7 +32,9 @@ const tempoList = [
     "Passado",
     "Passado Educado",
     "Te-Form",
-    "Te-form Educado"
+    "Te-form Educado",
+    "Volacional",
+    "Skip"
 ];
 
 function toggleConteudo(num) {
@@ -69,30 +71,40 @@ function loadConteudo() {
     //Cria o elemento ul intermediario
     const listaTempo = document.createElement("ul");
     for (let i = 0; i < tempoList.length; i++) {
-        //Cria o li correspondente
-        const AddLi = document.createElement("li");
+        if (tempoList[i] == "Skip") {
+            //Cria um li default vazio
+            const AddLi = document.createElement("li");
+            AddLi.classList.add("quebrar-linha");
 
-        //Cria o elemento input e configura ele
-        const addTempo = document.createElement("input");
-        addTempo.setAttribute("type", "checkbox");
-        addTempo.checked = true;
-        //Define a regra do nome dele
-        let nome = i;
-        addTempo.setAttribute("id", nome);
-        addTempo.setAttribute("name", nome);
-        addTempo.setAttribute("value", tempoList[i]);
+            //Colocando o Li dentro do Ul
+            listaTempo.appendChild(AddLi);
+        } else {
+            //Cria o li correspondente
+            const AddLi = document.createElement("li");
 
-        //Cria o elemento label e configura ele
-        const addLabel = document.createElement("label");
-        addLabel.setAttribute("for", nome);
-        addLabel.textContent = tempoList[i];
+            //Cria o elemento input e configura ele
+            const addTempo = document.createElement("input");
+            addTempo.setAttribute("type", "checkbox");
+            addTempo.checked = true;
+            //Define a regra do nome dele
+            let nome = i;
+            addTempo.setAttribute("id", nome);
+            addTempo.setAttribute("name", nome);
+            addTempo.setAttribute("value", tempoList[i]);
 
-        //Guarda os elementos dentro do Li
-        AddLi.appendChild(addTempo);
-        AddLi.appendChild(addLabel);
+            //Cria o elemento label e configura ele
+            const addLabel = document.createElement("label");
+            addLabel.setAttribute("for", nome);
+            addLabel.textContent = tempoList[i];
 
-        //Colocando o Li dentro do Ul
-        listaTempo.appendChild(AddLi);
+            //Guarda os elementos dentro do Li
+            AddLi.appendChild(addTempo);
+            AddLi.appendChild(addLabel);
+
+            //Colocando o Li dentro do Ul
+            listaTempo.appendChild(AddLi);
+        }
+
     }
     tempoDiv.appendChild(listaTempo);
 }
@@ -142,20 +154,20 @@ function Definir() {
         if (elementos[i].nodeName === "INPUT") {
             if (elementos[i].checked) {
                 selecionados.push(elementos[i].id);
-            }            
+            }
         }
     }
-    
+
 
     // Simplificando a atribuição
     temposSelecionados = selecionados;
     Carregar();
 }
-    
+
 const btnQuiz1 = document.getElementById("btn-revelar");
 const divQuiz = document.getElementById("answer-box");
 
-function revealResposta(){
+function revealResposta() {
     divQuiz.classList.remove("hidden");
     btnQuiz1.classList.add("hidden")
 }
@@ -167,11 +179,11 @@ function Carregar() {
 
     // CORREÇÃO: Sorteio de índice (0 até length - 1)
     // Se temposSelecionados tem 4 itens, randomTemp será 0, 1, 2 ou 3
-    let randomTemp = Math.floor(Math.random() * temposSelecionados.length);
+    let randomTemp = temposSelecionados[Math.floor(Math.random() * temposSelecionados.length)];
+    randomTemp = Number(randomTemp);
 
-    // Mesma lógica para o vocabulário
     let randomVocab = Math.floor(Math.random() * vocabList.length);
-    
+
     let palavraConjug;
     let verboAtual = vocabList[randomVocab];
 
@@ -179,6 +191,7 @@ function Carregar() {
     console.log(`A posição da palavra: ${randomVocab} ; Limite: ${vocabList.length}`);
     console.log(`O tempo selecionado: ${tempoList[randomTemp]}`);
     console.log(`A posição do tempo: ${randomTemp} ; Limite: ${temposSelecionados.length}`);
+    console.log(`O randomTemp: ${randomTemp}`)
     // Lembre-se: se randomTemp for 0, ele cairá no default se você começar os cases no 1
     switch (randomTemp) {
         case 0:
@@ -192,6 +205,9 @@ function Carregar() {
             break;
         case 3:
             palavraConjug = teForm(verboAtual, true);
+            break;
+        case 4:
+            palavraConjug = volational(verboAtual);
             break;
         default:
             palavraConjug = "Forma não definida"; // Útil para debug
@@ -304,6 +320,7 @@ function transformarFim(palavra, tipo) {
                     break;
             }
             break;
+
         default:
             result = "";
             break;
@@ -418,5 +435,54 @@ function teForm(palavra, polite) {
     palavraArray.pop();
     palavraFinal = palavraArray.join('');
     palavraFinal += result;
+    return palavraFinal;
+}
+
+function volational(palavra) {
+    let palavraArray = palavra.palavra.split('');
+    final = palavraArray.at(-1);
+    let result;
+    switch (final) {
+        case "る":
+            if (palavra.godan) {
+                result = "ろ";
+            } else {
+                result = "よ";
+            }
+            break;
+        case "う":
+            result = "お";
+            break;
+        case "つ":
+            result = "と";
+            break;
+
+        case "ぶ":
+            result = "ぼ";
+            break;
+
+        case "む":
+            result = "も";
+            break;
+
+        case "ぬ":
+            result = "の";
+            break;
+
+        case "く":
+            result = "こ";
+            break;
+
+        case "ぐ":
+            result = "ご";
+            break;
+        case "す":
+            result = "そ";
+            break;
+    }
+    palavraArray.pop();
+    palavraFinal = palavraArray.join('');
+    palavraFinal += result;
+    palavraFinal += "う";
     return palavraFinal;
 }
