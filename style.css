@@ -11,7 +11,7 @@ body{
   text-align: left;
   border: none;
   outline: none;
-  font-size: 18px;
+  font-size: 2vw;
 }
 
 .top{
@@ -50,7 +50,7 @@ body{
 /* Cada palavra individual */
 .list-vocab li {
   flex: 1 0 21%;       /* Tenta ocupar ~25%, subtraindo um pouco pelo 'gap' */
-  font-size: 1.2rem;   /* Aumenta o tamanho da fonte */
+  font-size: 1.5vw;   /* Aumenta o tamanho da fonte */
   font-weight: bold;   /* Deixa um pouco mais evidente */
   padding: 10px;
   background-color: #fff;
@@ -72,7 +72,7 @@ body{
   display: flex;
   flex: 1 0 48%;       /* Tenta ocupar ~25%, subtraindo um pouco pelo 'gap' */
   align-items: center;
-  font-size: 1.2rem;   /* Aumenta o tamanho da fonte */
+  font-size: 1.5vw;   /* Aumenta o tamanho da fonte */
   font-weight: bold;   /* Deixa um pouco mais evidente */
   padding: 10px;
   background-color: #fff;
@@ -108,9 +108,9 @@ body{
   border: none;
   outline: none;
   color: white;
-  padding: 15px;
+  padding: 20px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 2vw;
 }
 
 :root {
@@ -141,7 +141,7 @@ body{
 }
 
 .verb-tense {
-  font-size: 2.2rem; /* Título bem maior */
+  font-size: 2.5vw; /* Título bem maior */
   font-weight: 800;
   color: var(--primary-color);
   text-transform: uppercase;
@@ -149,7 +149,7 @@ body{
 }
 
 .base-verb {
-  font-size: 1.6rem; /* Verbo original maior */
+  font-size: 2vw; /* Verbo original maior */
   color: var(--text-secondary);
   font-style: italic;
   margin-bottom: 40px;
@@ -163,7 +163,7 @@ body{
   padding: 18px 36px; /* Botão mais robusto */
   border-radius: 12px;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.5vw;
   font-weight: bold;
   transition: all 0.3s ease;
 }
@@ -178,7 +178,7 @@ body{
 }
 
 .answer-text {
-  font-size: 2rem; /* Resposta com bastante destaque */
+  font-size: 1.5vw; /* Resposta com bastante destaque */
   font-weight: 700;
   color: var(--text-main);
 }
