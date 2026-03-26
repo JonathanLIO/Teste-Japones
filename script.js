@@ -181,7 +181,6 @@ function Carregar() {
     // Se temposSelecionados tem 4 itens, randomTemp será 0, 1, 2 ou 3
     let randomTemp = temposSelecionados[Math.floor(Math.random() * temposSelecionados.length)];
     randomTemp = Number(randomTemp);
-    let randomVocab = itens[Math.floor(Math.random() * tempoList.length)];
 
     let randomVocab = Math.floor(Math.random() * vocabList.length);
 
