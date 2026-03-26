@@ -1,4 +1,4 @@
-body{
+body {
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -11,18 +11,19 @@ body{
   text-align: left;
   border: none;
   outline: none;
-  font-size: 2vw;
 }
 
-.top{
+
+
+.top {
   border-radius: 5px 5px 0 0;
 }
 
-.middle{
+.middle {
   border-radius: 0 0 0 0;
 }
 
-.bottom{
+.bottom {
   border-radius: 0 0 5px 5px;
 }
 
@@ -30,9 +31,12 @@ body{
 .sanfona-content {
   padding: 0 15px;
   background-color: #f9f9f9;
-  max-height: 0; /* Começa escondido */
-  overflow: hidden; /* Garante que o texto suma */
-  transition: max-height 0.3s ease-out; /* Faz a animação suave */
+  max-height: 0;
+  /* Começa escondido */
+  overflow: hidden;
+  /* Garante que o texto suma */
+  transition: max-height 0.3s ease-out;
+  /* Faz a animação suave */
   border: 1px solid #ddd;
   border-top: none;
 }
@@ -40,45 +44,55 @@ body{
 /* O container que segura as palavras */
 .list-vocab ul {
   display: flex;
-  flex-wrap: wrap;     /* Permite que as palavras pulem para a linha de baixo */
-  list-style: none;    /* Remove as bolinhas da lista */
+  flex-wrap: wrap;
+  /* Permite que as palavras pulem para a linha de baixo */
+  list-style: none;
+  /* Remove as bolinhas da lista */
   padding: 10px;
   margin: 0;
-  gap: 10px;           /* Espaçamento entre as palavras */
+  gap: 10px;
+  /* Espaçamento entre as palavras */
 }
 
 /* Cada palavra individual */
 .list-vocab li {
-  flex: 1 0 21%;       /* Tenta ocupar ~25%, subtraindo um pouco pelo 'gap' */
-  font-size: 1.5vw;   /* Aumenta o tamanho da fonte */
-  font-weight: bold;   /* Deixa um pouco mais evidente */
+  flex: 1 0 21%;
+  /* Tenta ocupar ~25%, subtraindo um pouco pelo 'gap' */
+  font-weight: bold;
+  /* Deixa um pouco mais evidente */
   padding: 10px;
   background-color: #fff;
   border-radius: 5px;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Um efeitinho visual opcional */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  /* Um efeitinho visual opcional */
 }
 
 .list-tempo ul {
   display: flex;
-  flex-wrap: wrap;     /* Permite que as palavras pulem para a linha de baixo */
-  list-style: none;    /* Remove as bolinhas da lista */
+  flex-wrap: wrap;
+  /* Permite que as palavras pulem para a linha de baixo */
+  list-style: none;
+  /* Remove as bolinhas da lista */
   padding: 10px;
   margin: 0;
-  gap: 10px;           /* Espaçamento entre as palavras */
+  gap: 10px;
+  /* Espaçamento entre as palavras */
 }
 
 .list-tempo li {
   display: flex;
-  flex: 1 0 48%;       /* Tenta ocupar ~25%, subtraindo um pouco pelo 'gap' */
+  flex: 1 0 48%;
+  /* Tenta ocupar ~25%, subtraindo um pouco pelo 'gap' */
   align-items: center;
-  font-size: 1.5vw;   /* Aumenta o tamanho da fonte */
-  font-weight: bold;   /* Deixa um pouco mais evidente */
+  font-weight: bold;
+  /* Deixa um pouco mais evidente */
   padding: 10px;
   background-color: #fff;
   border-radius: 5px;
   text-align: left;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Um efeitinho visual opcional */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  /* Um efeitinho visual opcional */
 }
 
 .list-tempo input {
@@ -87,20 +101,20 @@ body{
 }
 
 .list-tempo label {
-  width: 95%; 
+  width: 95%;
 }
 
-.flex-column{
+.flex-column {
   display: flex;
   flex: 1 0 48%;
   gap: 10px;
 }
 
 .quebrar-linha {
-    flex: 0 0 100%; 
+  flex: 0 0 100%;
 }
 
-.select{
+.select {
   border-radius: 5px 5px 5px 5px;
   background-color: rgba(128, 0, 128, 0.829);
   width: 50%;
@@ -110,12 +124,13 @@ body{
   color: white;
   padding: 20px;
   cursor: pointer;
-  font-size: 2vw;
 }
 
 :root {
-  --primary-color: purple; /* Roxo vibrante */
-  --primary-hover: rgb(117, 0, 117); /* Roxo claro para o hover */
+  --primary-color: purple;
+  /* Roxo vibrante */
+  --primary-hover: rgb(117, 0, 117);
+  /* Roxo claro para o hover */
   --bg-card: #ffffff;
   --text-main: #2d3436;
   --text-secondary: grey;
@@ -125,23 +140,26 @@ body{
 .quiz-container {
   display: flex;
   justify-content: center;
-  padding: 40px 20px; /* Mais respiro em volta */
+  padding: 40px 20px;
+  /* Mais respiro em volta */
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 .quiz-card {
   background: var(--bg-card);
   border-radius: var(--border-radius);
-  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15); /* Sombra levemente roxa */
-  padding: 50px; /* Aumentei o preenchimento interno */
+  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15);
+  /* Sombra levemente roxa */
+  padding: 50px;
+  /* Aumentei o preenchimento interno */
   width: 100%;
-  max-width: 500px; /* Ficou bem mais largo */
+  max-width: 500px;
+  /* Ficou bem mais largo */
   text-align: center;
   border: 1px solid rgba(108, 92, 231, 0.1);
 }
 
 .verb-tense {
-  font-size: 2.5vw; /* Título bem maior */
   font-weight: 800;
   color: var(--primary-color);
   text-transform: uppercase;
@@ -149,7 +167,6 @@ body{
 }
 
 .base-verb {
-  font-size: 2vw; /* Verbo original maior */
   color: var(--text-secondary);
   font-style: italic;
   margin-bottom: 40px;
@@ -160,10 +177,10 @@ body{
   background-color: var(--primary-color);
   color: white;
   border: none;
-  padding: 18px 36px; /* Botão mais robusto */
+  padding: 18px 36px;
+  /* Botão mais robusto */
   border-radius: 12px;
   cursor: pointer;
-  font-size: 1.5vw;
   font-weight: bold;
   transition: all 0.3s ease;
 }
@@ -171,30 +188,66 @@ body{
 .answer-box {
   margin-top: 30px;
   padding: 25px;
-  background-color: #f3f0ff; /* Fundo roxo bem clarinho */
+  background-color: #f3f0ff;
+  /* Fundo roxo bem clarinho */
   border-radius: 12px;
   border: 2px solid var(--primary-color);
-  animation: fadeIn 0.4s ease; /* Animação simples para aparecer */
+  animation: fadeIn 0.4s ease;
+  /* Animação simples para aparecer */
 }
 
 .answer-text {
-  font-size: 1.5vw; /* Resposta com bastante destaque */
   font-weight: 700;
   color: var(--text-main);
 }
 
 /* Animação para a resposta não aparecer tão "seca" */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Classe que será adicionada via JavaScript */
 .aberto {
-  max-height: 900px; /* Um valor alto o suficiente para o seu texto */
+  max-height: 900px;
+  /* Um valor alto o suficiente para o seu texto */
   padding: 15px;
 }
 
-.hidden{
-  display: none;
+.hidden {
+    display: none;
+  }
+
+.title {
+  font-size: 60px;
+}
+
+.txtGrande {
+  font-size: 55px
+}
+
+.txtInter {
+  font-size: 50px;
+}
+
+@media (min-width: 768px) {
+
+  .title {
+    font-size: 30px;
+  }
+
+  .txtGrande {
+    font-size: 25px
+  }
+
+  .txtInter {
+    font-size: 20px;
+  }
 }
