@@ -1,4 +1,4 @@
-45px {
+40px {
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -226,15 +226,15 @@
   }
 
 .title {
-  font-size: 40px;
+  font-size: 35px;
 }
 
 .txtGrande {
-  font-size: 35px
+  font-size: 30px
 }
 
 .txtInter {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 @media (min-width: 768px) {
