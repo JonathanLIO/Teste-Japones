@@ -179,12 +179,9 @@ function Carregar() {
 
     // CORREÇÃO: Sorteio de índice (0 até length - 1)
     // Se temposSelecionados tem 4 itens, randomTemp será 0, 1, 2 ou 3
-<<<<<<< HEAD
     let randomTemp = temposSelecionados[Math.floor(Math.random() * temposSelecionados.length)];
     randomTemp = Number(randomTemp);
-=======
     let randomVocab = itens[Math.floor(Math.random() * tempoList.length)];
->>>>>>> cf3e33124a038fcd5957cc1da3a42ddda5de9ffc
 
     let randomVocab = Math.floor(Math.random() * vocabList.length);
 
@@ -441,7 +438,6 @@ function teForm(palavra, polite) {
     palavraFinal += result;
     return palavraFinal;
 }
-<<<<<<< HEAD
 
 function volational(palavra) {
     let palavraArray = palavra.palavra.split('');
@@ -491,5 +487,3 @@ function volational(palavra) {
     palavraFinal += "う";
     return palavraFinal;
 }
-=======
->>>>>>> cf3e33124a038fcd5957cc1da3a42ddda5de9ffc
