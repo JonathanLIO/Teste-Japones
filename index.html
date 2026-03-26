@@ -10,42 +10,43 @@
 
 <body>
   <!--DIV DO VOCABULARIO-->
-  <button class="sanfona-header top" onclick="toggleConteudo(1)">Vocabulario:</button>
+  <button class="sanfona-header top title" onclick="toggleConteudo(1)">Vocabulario:</button>
   <div class="list-vocab sanfona-content" id="vocab"></div>
+
   <!--DIV DO TEMPO-->
-  <button class="sanfona-header middle" onclick="toggleConteudo(2)">Tempos:</button>
+  <button class="sanfona-header middle title" onclick="toggleConteudo(2)">Tempos:</button>
   <div class="list-tempo sanfona-content" id="tempo">
     <div class="flex-column">
-      <button class="select" onclick="toggleOn()" id="toggle">Inverter Sinais</button>
-      <button class="select" onclick="untoggleOn()" id="untoggle">Desselecionar todos</button>
+      <button class="select txtGrande" onclick="toggleOn()" id="toggle">Inverter Sinais</button>
+      <button class="select txtGrande" onclick="untoggleOn()" id="untoggle">Desselecionar todos</button>
     </div>
 
   </div>
 
   <!--BOTÃO PARA DEFINIR OS TEMPOS-->
-  <button id="show-btn" class="sanfona-header bottom" onclick="Definir()">Definir</button>
+  <button id="show-btn" class="sanfona-header bottom title" onclick="Definir()">Definir</button>
 
   <!--DIV DO QUIZ-->
   <div class="hidden" id="hidden">
     <div class="quiz-container">
       <div class="quiz-card">
         <!--TEMPO DE CONJUGAÇÃO-->
-        <div class="verb-tense" id="verb-tense">Pretérito Imperfeito</div>
+        <div class="verb-tense title" id="verb-tense">Pretérito Imperfeito</div>
         <!--VERBO BASE-->
-        <div class="base-verb" id="base-verb">Estudar</div>
+        <div class="base-verb txtGrande" id="base-verb">Estudar</div>
 
-        <button class="reveal-btn hidden" id="btn-revelar" onclick="revealResposta()">Mostrar Conjugação</button>
+        <button class="reveal-btn hidden title" id="btn-revelar" onclick="revealResposta()">Mostrar Conjugação</button>
         
         <div class="answer-box" id="answer-box">
           <!--VERBO CONJUGAÇÃO-->
-          <span class="answer-text" id="answer-text">Eu estudava</span><br>
-          <button class="reveal-btn" id="btn-reiniciar" onclick="Carregar()">Gerar proxima palavra</button>
+          <span class="answer-text txtGrande" id="answer-text">Eu estudava</span><br>
+          <button class="reveal-btn title" id="btn-reiniciar" onclick="Carregar()">Gerar proxima palavra</button>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
